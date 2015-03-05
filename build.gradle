@@ -1,8 +1,10 @@
 apply plugin: 'groovy'
 apply plugin: 'application'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 mainClassName = 'com.cholick.demo.ReloadingApplication'
 String springloadedVersion = '1.2.0.RELEASE'
@@ -61,3 +63,11 @@ task watchThread() << {
 run.mustRunAfter watchThread
 
 task reloading(dependsOn: [watchThread, copyAgent, run])
+
+
+
+idea{
+     module{
+		  downloadSources = true
+	  }
+}
